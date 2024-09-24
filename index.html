@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime List Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <img src="https://anilist.co/img/logo.png" alt="AniList Logo" class="logo">
+            <h1>AniList</h1>
+            
+              
+            </div>
+    
+           <!-- <div class="auth-buttons">
+                <button id="login-btn">Login</button>
+                <button id="signup-btn">Sign Up</button>
+            </div>-->
+        </div>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" id="search" placeholder="Search for Anime...">
+        <button id="search-btn"><i class="fas fa-search"></i></button>
+        <select id="genre-select">
+            <option value="">Select Genre</option>
+            <!-- Options will be dynamically added here-->
+        </select>
+    </div>
+
+
+
+
+   <!-- <section class="carousel">
+        <button class="prev" id="prev-btn">❮</button>
+        <div class="carousel-container" id="carousel-container">
+          Slides will be dynamically added here
+        </div>
+        <button class="next" id="next-btn">❯</button>
+    </section>-->
+
+
+
+    
+    <section class="trending">
+        <h2>Trending Anime</h2>
+        <button class="scroll-btn prev" id="trending-prev-btn">❮</button>
+        <div class="trending-container" id="trending-container">
+            <!-- Trending anime will be dynamically added here -->
+        </div>
+        <button class="scroll-btn next" id="trending-next-btn">❯</button>
+    </section>
+    
+    
+
+    <main>
+        <div id="anime-container"></div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
