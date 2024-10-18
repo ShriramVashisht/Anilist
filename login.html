@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login_styles.css">
+</head>
+
+<body>
+    <body>
+        <header>
+            <div class="navbar">
+                <a href="index.html">
+                    <img id="allogo" src="https://anilist.co/img/icons/android-chrome-512x512.png" alt="AniList Logo" class="logo">
+                </a>
+                <a href="index.html">
+                    <h1>AniList</h1>
+                </a>
+
+                </div>
+                <div class="user-profile" id="user-profile" style="display: none;">
+                    <i class="bi bi-person-circle profile-icon" id="profile-icon" style="font-size: 40px;"></i>
+                    <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+                        <a href="WishList.html">My Wishlist</a>
+                        <!-- <a href="#" id="logout-btn">Logout</a> -->
+                    </div>
+                </div>            
+            </div>
+        </header>
+    <div class="login-container">
+        <h1>Login</h1><br> <br>
+        <form id="login-form">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p><a href="#">Forgot your password?</a></p>
+        <p>Not registered? <a href="signup.html">Create an account</a></p>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script type="module" src="Login.js"></script>
+    <footer class="footer">
+        <p>Made by Shriram Tiwari</p>
+    </footer>
+
+</body>
+</body>
+
+</html>

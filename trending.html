@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Anime</title>
+    <link rel="stylesheet" href="css/styles1.css">
+    <style>
+        /* Add CSS for truncating titles and tooltip */
+        .anime-title {
+            white-space: nowrap;         /* Prevent text from wrapping to a new line */
+            overflow: hidden;            /* Hide overflowed text */
+            text-overflow: ellipsis;     /* Show "..." when text overflows */
+            max-width: 150px;            /* Limit the width for truncation effect */
+            display: inline-block;
+            cursor: pointer;             /* Change cursor to pointer to indicate interaction */
+            position: relative;
+        }
+
+        .anime-title:hover::after {
+            content: attr(title);        /* Use the "title" attribute as the tooltip text */
+            position: absolute;
+            left: 0;
+            bottom: 125%;                /* Show the tooltip above the text */
+            background-color: #333;      /* Tooltip background */
+            color: #fff;                 /* Tooltip text color */
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <a href="index.html">
+                <img id="allogo" src="https://anilist.co/img/icons/android-chrome-512x512.png" alt="AniList Logo" class="logo">
+            </a>
+            <a href="index.html">
+                <h1>AniList</h1>
+            </a>
+        </div>
+        <div class="user-profile" id="user-profile" style="display: none;">
+            <i class="bi bi-person-circle profile-icon" id="profile-icon" style="font-size: 40px;"></i>
+            <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+                <a href="WishList.html">My Wishlist</a>
+            </div>
+        </div>
+    </header><br>
+
+    <h2>Trending Anime</h2>
+    <main id="anime-list">
+        <div class="loading">Loading...</div>
+    </main>
+    <br><br>
+    <footer class="footer">
+        <p>Made by Shriram Tiwari</p>
+    </footer>
+
+    <script>
+        const animeList = document.getElementById('anime-list');
+        let currentPage = 1;  // Keep track of the current page
+
+        // Fetch trending anime with pagination
+        async function fetchTrendingAnime(page = 1) {
+            try {
+                const response = await fetch(`https://api.jikan.moe/v4/top/anime?page=${page}&limit=25`);
+                const data = await response.json();
+                displayAnime(data.data);
+            } catch (error) {
+                animeList.innerHTML = '<p>Error fetching data.</p>';
+            }
+        }
+
+        function displayAnime(animeArray) {
+            // Remove "Loading" text
+            document.querySelector('.loading')?.remove();
+
+            // Append new anime items
+            animeArray.forEach(anime => {
+                const animeItem = document.createElement('div');
+                animeItem.classList.add('anime-item');
+                animeItem.innerHTML = `
+                    <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}" class="anime-img" data-id="${anime.mal_id}">
+                    <h3 class="anime-title" data-id="${anime.mal_id}" title="${anime.title}">${anime.title}</h3>
+                    <p><strong>Score:</strong> ${anime.score}</p>
+                `;
+                animeList.appendChild(animeItem);
+            });
+
+            // Attach event listeners to each anime item (both image and title)
+            document.querySelectorAll('.anime-img, .anime-title').forEach(item => {
+                item.addEventListener('click', () => {
+                    const animeId = item.getAttribute('data-id');
+                    window.location.href = `anime-info.html?id=${animeId}`; // Redirect with anime ID as a query parameter
+                });
+            });
+
+            // Load more button handling
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            if (loadMoreBtn) {
+                loadMoreBtn.remove();
+            }
+
+            const loadMoreContainer = document.createElement('div');
+            loadMoreContainer.classList.add('load-more-container');
+
+            const newLoadMoreBtn = document.createElement('button');
+            newLoadMoreBtn.id = 'load-more-btn';
+            newLoadMoreBtn.classList.add('load-more-button');
+            newLoadMoreBtn.textContent = 'Load More';
+            newLoadMoreBtn.onclick = loadMoreAnime;
+
+            loadMoreContainer.appendChild(newLoadMoreBtn);
+            animeList.appendChild(loadMoreContainer);
+        }
+
+        // Function to load the next page of anime
+        function loadMoreAnime() {
+            currentPage++;
+            fetchTrendingAnime(currentPage);
+        }
+
+        // Initial load of page 1
+        fetchTrendingAnime();
+    </script>
+
+    <script type="module" src="wishlist.js"></script>
+</body>
+
+</html>

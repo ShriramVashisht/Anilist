@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | AniList</title>
+    <link rel="stylesheet" href="css/signup_styles.css">
+</head>
+
+<body>
+    <body>
+        <header>
+            <div class="navbar">
+                <a href="index.html">
+                    <img id="allogo" src="https://anilist.co/img/icons/android-chrome-512x512.png" alt="AniList Logo" class="logo">
+                </a>
+                <a href="index.html">
+                    <h1>AniList</h1>
+                </a>
+                <div class="auth-buttons" id="auth-buttons">
+                    <a href="login.html">
+                        <button id="login-btn">Login</button>
+                    </a>
+                    <a href="signup.html">
+                        <button id="signup-btn">Sign up</button>
+                    </a>
+                </div>
+                <div class="user-profile" id="user-profile" style="display: none;">
+                    <i class="bi bi-person-circle profile-icon" id="profile-icon" style="font-size: 40px;"></i>
+                    <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+                        <a href="WishList.html">My Wishlist</a>
+                        <!-- <a href="#" id="logout-btn">Logout</a> -->
+                    </div>
+                </div>            
+            </div>
+        </header>
+    <div class="signup-form-container">
+        <form id="signup-form">
+            <h2>Sign up to AniList</h2>
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" required>
+            <button type="submit">Sign Up</button>
+            <p>Already a Customer? <a href="login.html">Log In</a></p>
+
+        </form>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script type="module" src="signup.js"></script>
+    <script src="index.js"></script>
+    <footer class="footer">
+        <p>Made by Shriram Tiwari</p>
+    </footer>
+
+</body>
+
+</html>

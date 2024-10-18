@@ -1,26 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime List Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
 </head>
+
 <body>
     <header>
         <div class="navbar">
-            <img src="https://anilist.co/img/logo.png" alt="AniList Logo" class="logo">
-            <h1>AniList</h1>
-            
-              
+            <a href="index.html">
+                <img id="allogo" src="https://anilist.co/img/icons/android-chrome-512x512.png" alt="AniList Logo" class="logo">
+            </a>
+            <a href="index.html">
+                <h1>AniList</h1>
+            </a>
+            <div class="auth-buttons" id="auth-buttons">
+                <a href="login.html">
+                    <button id="login-btn">Login</button>
+                </a>
+                <a href="signup.html">
+                    <button id="signup-btn">Sign up</button>
+                </a>
             </div>
-    
-           <!-- <div class="auth-buttons">
-                <button id="login-btn">Login</button>
-                <button id="signup-btn">Sign Up</button>
-            </div>-->
+            <div class="user-profile" id="user-profile" style="display: none;">
+                <i class="bi bi-person-circle profile-icon" id="profile-icon" style="font-size: 40px;"></i>
+                <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
+                    <!-- <a href="wishlist.html">My Wishlist</a> -->
+                    <!-- <a href="#" id="logout-btn">Logout</a> -->
+                </div>
+            </div>            
         </div>
     </header>
+
 
     <div class="search-bar">
         <input type="text" id="search" placeholder="Search for Anime...">
@@ -31,34 +48,62 @@
         </select>
     </div>
 
-
-
-
-   <!-- <section class="carousel">
-        <button class="prev" id="prev-btn">❮</button>
-        <div class="carousel-container" id="carousel-container">
-          Slides will be dynamically added here
-        </div>
-        <button class="next" id="next-btn">❯</button>
-    </section>-->
-
-
-
-    
     <section class="trending">
-        <h2>Trending Anime</h2>
-        <button class="scroll-btn prev" id="trending-prev-btn">❮</button>
+        <h2>Trending Anime <a href="trending.html" class="view-all">View All</a> 
+        </h2>
+
         <div class="trending-container" id="trending-container">
             <!-- Trending anime will be dynamically added here -->
         </div>
-        <button class="scroll-btn next" id="trending-next-btn">❯</button>
+
     </section>
-    
-    
+
+    <section class="popular-season">
+        <h2>Popular This Season <a href="popular.html" class="view-all">View All</a>
+        </h2>
+
+        <div class="season-container" id="season-container">
+            <!-- Popular season anime will be dynamically added here -->
+        </div>
+
+    </section>
+
+    <section class="upcoming-anime">
+        <h2>Upcoming Animes  <a href="upcoming.html" class="view-all">View All</a>
+        </h2>
+
+        <div class="upcoming-container" id="upcoming-container">
+            <!-- Upcoming animes will be dynamically added here -->
+        </div>
+
+    </section>
+
+    <section class="wishlist-anime">
+        <h2>WishList
+        </h2>
+
+        <div class="wishlist-container" id="wishlist-container"></div>
+            <!-- Upcoming animes will be dynamically added here -->
+        </div>
+
+    </section>
+
 
     <main>
-        <div id="anime-container"></div>
+        <div id="anime-container"></div> <!-- Container for the list of anime -->
     </main>
+
+
+
+    <script type="module" src="anime-api.js"></script>
+    <script type="module" src="anime-utils.js"></script>
+    <script type="module" src="wishlist.js"></script>
+    <script type="module" src="index.js"></script>
     <script src="script.js"></script>
-</body>
+    <footer class="footer">
+        <p>Made by Shriram Tiwari</p>
+    </footer>
+
+    </body>
+
 </html>
